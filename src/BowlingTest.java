@@ -23,12 +23,26 @@ public class BowlingTest {
 		game.bowl(8);
 		assertEquals("incorrect game score", 8, game.getGameScore());
 		assertEquals("incorrect frame score", 8, game.getFrameScore(1));
-		assertEquals("incorrect frame score", 8, game.getFrameScore(1));
+//		assertEquals("incorrect frame score", 0, game.getFrameScore(2));
 	}
 
 	@Test
 	public void testTwoThrows() {
-		game.bowl(pins);
+		game.bowl(7);
+		assertEquals("incorrect game score", 7, game.getGameScore());
+		assertEquals("incorrect frame score", 0, game.getFrameScore(1));
+		game.bowl(2);
+		assertEquals("incorrect game score", 9, game.getGameScore());
+		assertEquals("incorrect frame score", 0, game.getFrameScore(1));
+		
+		//testing two strikes in a row
+		game.newGame();
+		game.bowl(10);
+		game.bowl(10);
+		game.bowl(2);
+		assertEquals("incorrect game score", 36, game.getGameScore());
+		assertEquals("incorrect frame score", 20, game.getFrameScore(0));
+		assertEquals("incorrect frame score", 10, game.getFrameScore(1));
 	}
 	
 	@Test
