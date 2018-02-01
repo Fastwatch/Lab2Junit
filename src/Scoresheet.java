@@ -5,6 +5,11 @@ public class Scoresheet {
 	private Frame add2;
 	private Frame[] add1 = new Frame[2];
 	
+	public Scoresheet() {
+		frames = new Frame[10];
+		currentFrame = 0;
+	}
+	
 	public int getCurrentFrame() {
 		return currentFrame;
 	}
@@ -24,11 +29,9 @@ public class Scoresheet {
 	public void bowl(int pins) {
 		
 		if(!canPlay()) throw new IllegalStateException("Cannot Play, the game is finished");
-		
 		frames[currentFrame].bowl(pins);
 		
 		if(!frames[currentFrame].canBowl()) {
-			
 			updateScores();
 			
 			if(frames[currentFrame].isStrike()) {
@@ -42,11 +45,12 @@ public class Scoresheet {
 	}
 	
 	public void newGame() {
-		for (Frame f : frames) {
-			f = new Frame();
+		for (int i = 0; i < 10; ++i) {
+			frames[i] = new Frame();
 		}
 		currentFrame = 0;
-		
+		add1 = new Frame[2];
+		add2 = null;
 	}
 	
 	private boolean canPlay() {

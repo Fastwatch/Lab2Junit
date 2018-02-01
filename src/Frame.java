@@ -28,7 +28,7 @@ public class Frame {
 	}
 	
 	public boolean canBowl() {
-		return (bowls < 2 || score < 10);
+		return (bowls < 2 && score < 10);
 	}
 	
 	public boolean isStrike() {
